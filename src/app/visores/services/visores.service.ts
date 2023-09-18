@@ -8,7 +8,7 @@ import { delay, first, tap } from 'rxjs/operators';
 })
 export class VisoresService {
 
-  private readonly API = '/assets/visores.json';
+  private readonly API = 'api/visores';
 
   constructor(private httpClient: HttpClient) { }
 
