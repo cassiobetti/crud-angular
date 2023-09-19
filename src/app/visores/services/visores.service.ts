@@ -16,8 +16,11 @@ export class VisoresService {
     return this.httpClient.get<Visor[]>(this.API)
     .pipe(
       first(),
-      delay(2000),
       tap(visores => console.log(visores) )
     );
+  }
+
+  save(record: Visor) {
+    return this.httpClient.post<Visor>(this.API, record);
   }
 }

@@ -3,7 +3,7 @@ export interface Visor {
   nome: string;
   ativo: string;
   chamadas: string;
-  Tempo: string;
+  tempo: string;
   recepcao: string;
   atendimento: string;
   estatistica: string;

@@ -5,6 +5,7 @@ import { Observable, of } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { MatDialog } from '@angular/material/dialog';
 import { ErrorDialogComponent } from '../../shared/components/error-dialog/error-dialog.component';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-visores',
@@ -14,11 +15,13 @@ import { ErrorDialogComponent } from '../../shared/components/error-dialog/error
 export class VisoresComponent {
 
   visores$: Observable<Visor[]>;
-  displayedColumns = ['nome', 'ativo', 'recepcao', 'atendimento', '_id' ];
+  displayedColumns = ['actions', 'nome', 'ativo', 'recepcao', 'atendimento', '_id' ];
 
   constructor(
     private visoresService: VisoresService,
-    public dialog: MatDialog
+    public dialog: MatDialog,
+    private router: Router,
+    private route: ActivatedRoute
 
     ){
      this.visores$ = this.visoresService.list()
@@ -34,5 +37,9 @@ export class VisoresComponent {
     this.dialog.open(ErrorDialogComponent, {
       data: errorMsg
     });
+}
+
+onAdd() {
+  this.router.navigate(['new'], {relativeTo: this.route});
 }
 }

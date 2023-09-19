@@ -1,9 +1,28 @@
 <mat-card-content>
 
-  <mat-toolbar></mat-toolbar>
+    <mat-toolbar>
+      <button (click)="onAdd()" mat-mini-fab color="accent" aria-label="Adicionar um visor">
+        <mat-icon >add</mat-icon>
+      </button>
+    </mat-toolbar>
 
   <div *ngIf="visores$ | async as visores; else loading">
   <table mat-table [dataSource]="visores" class="mat-elevation-z8">
+
+    <ng-container matColumnDef="actions">
+      <mat-header-cell *matHeaderCellDef>
+      </mat-header-cell>
+
+      <mat-cell *matCellDef="let visor">
+        <button mat-icon-button color="primary" aria-label="Editar Visor">
+          <mat-icon>edit</mat-icon>
+        </button>
+
+        <button mat-icon-button color="warn" aria-label="Remover Visor">
+          <mat-icon>delete</mat-icon>
+        </button>
+      </mat-cell>
+    </ng-container>
 
     <ng-container matColumnDef="nome">
       <th mat-header-cell *matHeaderCellDef> Nome </th>

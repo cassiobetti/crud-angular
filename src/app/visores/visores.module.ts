@@ -5,17 +5,21 @@ import { AppMaterialModule } from '../shared/app-material/app-material.module';
 import { SharedModule } from '../shared/shared.module';
 import { VisoresRoutingModule } from './visores-routing.module';
 import { VisoresComponent } from './visores/visores.component';
+import { VisoresFormComponent } from './visores-form/visores-form.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
   declarations: [
-    VisoresComponent
+    VisoresComponent,
+    VisoresFormComponent
   ],
   imports: [
     CommonModule,
     VisoresRoutingModule,
     AppMaterialModule,
-    SharedModule
+    SharedModule,
+    ReactiveFormsModule
   ]
 })
 export class VisoresModule { }

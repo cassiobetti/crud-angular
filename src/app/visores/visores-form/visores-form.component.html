@@ -1,0 +1,31 @@
+<mat-card>
+  <form [formGroup]="form">
+      <p>Nome</p>
+      <input  formControlName="nome">
+
+      <p>Ativo</p>
+      <input type="checkbox" formControlName="ativo">
+
+      <p>Qtde de chamadas</p>
+      <input  formControlName="chamadas">
+
+      <p>Tempo entre uma chamada e outra (segundos)</p>
+      <input  formControlName="tempo">
+
+      <p>Chama Recepção (PA)</p>
+      <input type="checkbox" formControlName="recepcao">
+
+      <p>Chama Pré Atendimento (PA)</p>
+      <input type="checkbox" formControlName="atendimento">
+
+      <p>Gera Estatística (PA)</p>
+      <input type="checkbox" formControlName="estatistica">
+  </form>
+</mat-card>
+
+<mat-card class="btn-new">
+<mat-card-actions>
+  <button mat-raised-button (click)="onSubmit()">Gravar</button>
+  <button mat-raised-button (click)="onCancel()">Fechar</button>
+</mat-card-actions>
+</mat-card>
