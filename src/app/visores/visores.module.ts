@@ -7,12 +7,14 @@ import { VisoresRoutingModule } from './visores-routing.module';
 import { VisoresComponent } from './visores/visores.component';
 import { VisoresFormComponent } from './visores-form/visores-form.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { VisoresListComponent } from './visores/visores-list/visores-list.component';
 
 
 @NgModule({
   declarations: [
     VisoresComponent,
-    VisoresFormComponent
+    VisoresFormComponent,
+    VisoresListComponent
   ],
   imports: [
     CommonModule,

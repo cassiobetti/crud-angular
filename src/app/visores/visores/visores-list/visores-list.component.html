@@ -1,0 +1,46 @@
+<mat-table [dataSource]="visores">
+
+  <ng-container matColumnDef="actions">
+    <mat-header-cell *matHeaderCellDef>
+    </mat-header-cell>
+
+    <mat-cell *matCellDef="let visor">
+      <button (click)="onEdit(visor)" mat-icon-button color="primary" aria-label="Editar Visor">
+        <mat-icon>edit</mat-icon>
+      </button>
+
+      <button mat-icon-button color="warn" aria-label="Remover Visor">
+        <mat-icon>delete</mat-icon>
+      </button>
+    </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="nome">
+    <mat-header-cell  *matHeaderCellDef> Nome </mat-header-cell>
+    <mat-cell  *matCellDef="let visor"> {{ visor.nome}} </mat-cell>
+  </ng-container>
+
+
+  <ng-container matColumnDef="ativo">
+    <mat-header-cell  *matHeaderCellDef> Ativo </mat-header-cell>
+    <mat-cell  *matCellDef="let visor"> {{visor.ativo}} </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="recepcao">
+    <mat-header-cell  *matHeaderCellDef> Chama Recepção (PA) </mat-header-cell>
+    <mat-cell  *matCellDef="let visor"> {{visor.recepcao}} </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="atendimento">
+    <mat-header-cell  *matHeaderCellDef> Chama Pré Atendimento (PA)</mat-header-cell>
+    <mat-cell  *matCellDef="let visor"> {{visor.atendimento}} </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="_id">
+    <mat-header-cell  *matHeaderCellDef> ID </mat-header-cell>
+    <mat-cell  *matCellDef="let visor"> {{visor._id}} </mat-cell>
+  </ng-container>
+
+  <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+  <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+</mat-table>

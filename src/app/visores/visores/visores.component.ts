@@ -15,7 +15,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class VisoresComponent {
 
   visores$: Observable<Visor[]>;
-  displayedColumns = ['actions', 'nome', 'ativo', 'recepcao', 'atendimento', '_id' ];
+
 
   constructor(
     private visoresService: VisoresService,
@@ -37,9 +37,13 @@ export class VisoresComponent {
     this.dialog.open(ErrorDialogComponent, {
       data: errorMsg
     });
-}
+  }
 
-onAdd() {
-  this.router.navigate(['new'], {relativeTo: this.route});
-}
+  onAdd() {
+    this.router.navigate(['new'], {relativeTo: this.route});
+  }
+
+  onEdit(visor: Visor) {
+    this.router.navigate(['edit',visor._id], {relativeTo: this.route});
+  }
 }

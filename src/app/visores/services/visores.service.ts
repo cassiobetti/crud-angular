@@ -20,7 +20,11 @@ export class VisoresService {
     );
   }
 
-  save(record: Visor) {
+  loadById(id: string) {
+    return this.httpClient.get<Visor>(`${this.API}/${id}`);
+  }
+
+  save(record: Partial<Visor>) {
     return this.httpClient.post<Visor>(this.API, record);
   }
 }
