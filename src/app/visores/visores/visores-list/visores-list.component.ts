@@ -12,6 +12,7 @@ export class VisoresListComponent {
   @Input() visores: Visor[] = [];
   @Output() add = new EventEmitter(false);
   @Output() edit = new EventEmitter(false);
+  @Output() remove = new EventEmitter(false);
 
   readonly displayedColumns = ['actions', 'nome', 'ativo', 'recepcao', 'atendimento', '_id' ];
 
@@ -24,5 +25,9 @@ export class VisoresListComponent {
 
   onEdit(visor: Visor) {
     this.edit.emit(visor);
+  }
+
+  onDelete(visor: Visor) {
+    this.remove.emit(visor);
   }
 }

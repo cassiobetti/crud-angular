@@ -4,6 +4,8 @@ import { NonNullableFormBuilder } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
 import { VisoresService } from '../services/visores.service';
+import { ActivatedRoute } from '@angular/router';
+import { Visor } from '../model/visor';
 
 @Component({
   selector: 'app-visores-form',
@@ -13,6 +15,7 @@ import { VisoresService } from '../services/visores.service';
 export class VisoresFormComponent {
 
   form = this.formBuilder.group({
+    _id: [''],
     nome: [''],
     ativo: [''],
     chamadas: [''],
@@ -25,9 +28,24 @@ export class VisoresFormComponent {
  constructor(private formBuilder: NonNullableFormBuilder,
   private service: VisoresService,
   private snackBar: MatSnackBar,
-  private location: Location) {
+  private location: Location,
+  private route: ActivatedRoute) {
 
  }
+
+ngOnInit(): void {
+  const visor: Visor = this.route.snapshot.data['visor'];
+  this.form.setValue({
+    _id: visor._id,
+    nome: visor.nome,
+    ativo: visor.ativo,
+    chamadas: visor.chamadas,
+    tempo: visor.tempo,
+    recepcao: visor.recepcao,
+    atendimento: visor.atendimento,
+    estatistica: visor.estatistica
+  });
+}
 
  onSubmit() {
     this.service.save(this.form.value)

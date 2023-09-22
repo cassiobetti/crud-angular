@@ -16,7 +16,7 @@ export class VisoresService {
     return this.httpClient.get<Visor[]>(this.API)
     .pipe(
       first(),
-      tap(visores => console.log(visores) )
+      //tap(visores => console.log(visores) )
     );
   }
 
@@ -25,6 +25,21 @@ export class VisoresService {
   }
 
   save(record: Partial<Visor>) {
+    if (record._id) {
+      return this.update(record);
+    }
+    return this.create(record);
+  }
+
+  private create(record: Partial<Visor>) {
     return this.httpClient.post<Visor>(this.API, record);
+  }
+
+  private update(record: Partial<Visor>){
+    return this.httpClient.put<Visor>(`${this.API}/${record._id}`, record);
+  }
+
+  remove(id: String){
+    return this.httpClient.delete(`${this.API}/${id}`);
   }
 }

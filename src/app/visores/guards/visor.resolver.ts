@@ -1,23 +1,20 @@
-import { ResolveFn } from '@angular/router';
-
-export const visorResolver: ResolveFn<boolean> = (route, state) => {
-  return true;
-};
-
-import { inject } from '@angular/core';
-import { ActivatedRouteSnapshot, ResolveFn, RouterStateSnapshot,} from '@angular/router';
+import { Injectable } from '@angular/core';
+import { ActivatedRouteSnapshot, Resolve, RouterStateSnapshot,} from '@angular/router';
 import { Observable, of } from 'rxjs';
-
 import { Visor } from '../model/visor';
 import { VisoresService } from '../services/visores.service';
 
+@Injectable({
+  providedIn: 'root'
+})
+export class visorResolver implements Resolve<Visor> {
 
-export const visorResolver: ResolveFn<Observable<Visor>> = (route, state,  service: VisoresService =
-  inject(VisoresService)) => {
+  constructor(private service: VisoresService) {}
 
-   if (route.params?.['id']){
-    return service.loadById(route.params['id']);
+  resolve(route: ActivatedRouteSnapshot, state:RouterStateSnapshot): Observable<Visor> {
+    if (route.params && route.params['id']) {
+      return this.service.loadById(route.params['id']);
   }
-  return of({ id: '', nome: '', ativo: '', chamadas: '', tempo: '', recepcao: '', atendimento: '', estatistica: '' });
-};
-
+   return of({ _id: '', nome: '', ativo: '', chamadas: '', tempo: '', recepcao: '', atendimento: '', estatistica: '' });
+ }
+}
