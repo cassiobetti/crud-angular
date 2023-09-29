@@ -55,6 +55,8 @@ export class VisoresComponent {
     this.router.navigate(['edit',visor._id], {relativeTo: this.route});
   }
 
+ 
+
   onRemove(visor: Visor) {
     const dialogRef = this.dialog.open(ConfirmationDialogComponent, {
       data: 'Deseja realmente excluir a tela?',

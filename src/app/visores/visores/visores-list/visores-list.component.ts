@@ -14,7 +14,7 @@ export class VisoresListComponent {
   @Output() edit = new EventEmitter(false);
   @Output() remove = new EventEmitter(false);
 
-  readonly displayedColumns = ['actions', 'nome', 'ativo', 'recepcao', 'atendimento', '_id' ];
+  readonly displayedColumns = ['edit', 'delete', 'nome', 'ativo', 'recepcao', 'atendimento', '_id' ];
 
   constructor() {}
 

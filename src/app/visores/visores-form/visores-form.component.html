@@ -1,31 +1,47 @@
-<mat-card>
+<div class="group">
   <form [formGroup]="form" class="min-widht">
-      <p>Nome</p>
-      <input  formControlName="nome">
+      <div class="nome" style="align-items: flex-end;">
+       		<div style="width: 95%; padding: 5px 3px 3px 3px;">
+       			 <label> Nome </label>
+        		 <input type="text" style="width: 99%;" formControlName="nome">
+		      </div>
+        <div style="padding: 5px 3px 3px 3px;">
+       		 <input type="checkbox" formControlName="ativo">
+		       Ativo
+ 	      </div>
+      </div>
 
-      <p>Ativo</p>
-      <input type="checkbox" formControlName="ativo">
+    <div class="nome" style="align-items: flex-end;">
+	    <div style="width: 49%; padding: 5px 3px 3px 3px;">
+        <label > Qtde de chamadas </label>
+		    <input type="number" style="width: 99%;" formControlName="chamadas">
+      </div>
+	    <div style="width: 50%; padding: 5px 3px 3px 3px;">
+        <label> Tempo entre uma chamada e outra (segundos) </label>
+        <input type="number" style="width: 99%;"  formControlName="tempo">
+      </div>
+    </div>
 
-      <p>Qtde de chamadas</p>
-      <input  formControlName="chamadas">
-
-      <p>Tempo entre uma chamada e outra (segundos)</p>
-      <input  formControlName="tempo">
-
-      <p>Chama Recepção (PA)</p>
-      <input type="checkbox" formControlName="recepcao">
-
-      <p>Chama Pré Atendimento (PA)</p>
-      <input type="checkbox" formControlName="atendimento">
-
-      <p>Gera Estatística (PA)</p>
-      <input type="checkbox" formControlName="estatistica">
+    <div class="chama" style="align-items: flex-end;">
+	    <div style="padding: 5px 3px 3px 3px;">
+        <input type="checkbox" formControlName="recepcao">
+		    Chama Recepção (PA)
+	    </div>
+	    <div style="padding: 5px 3px 3px 3px;">
+        <input type="checkbox" formControlName="atendimento">
+		    Chama Pré Atendimento (PA)
+	    </div>
+	    <div style="padding: 5px 3px 3px 3px;">
+        <input type="checkbox" formControlName="estatistica">
+		    Gera Estatística (PA)
+		  </div>
+    </div>
   </form>
-</mat-card>
+</div>
 
 <mat-card class="btn-new">
 <mat-card-actions>
-  <button mat-raised-button (click)="onSubmit()">Gravar</button>
-  <button mat-raised-button (click)="onCancel()">Fechar</button>
+  <button class="btn" (click)="onSubmit()">Gravar</button>
+  <button (click)="onCancel()">Fechar</button>
 </mat-card-actions>
 </mat-card>

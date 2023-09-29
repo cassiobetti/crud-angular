@@ -1,4 +1,28 @@
-.mat-table {
+mat-table {
   overflow: auto;
   max-height: 600px;
+  display: flex;
+  flex-direction: column;
+  min-width: 300px;
+  box-sizing: border-box;
+  font-family: Roboto, Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 22px;
+  border: 1px solid #d3d3d3;
+
 }
+
+mat-header-cell {
+  font-size: 12px;
+
+}
+
+mat-cell {
+  font-size: 12px;
+}
+
+mat-icon {
+  color: black;
+  width: 35px;
+  height: 20px;
+}
+

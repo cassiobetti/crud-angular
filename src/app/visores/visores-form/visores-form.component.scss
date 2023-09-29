@@ -1,18 +1,120 @@
 mat-card {
   max-width: 99%;
   margin: .5em auto;
+  font-family: Roboto, Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 12px;
 }
 
 .full-widht{
-  width: 100%;
+  width: 99%;
 }
 
 .min-widht {
-  width: 100%;
+  width: 98%;
   min-width: 150px;
+  margin: 10px;
 }
 
 .btn-new {
   max-width: 100%;
   margin-bottom: .5em auto;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 5px;
+  margin: 0;
+  background-color: #fff;
+  border-top: 1px solid #d3d3d3;
+  color: #000;
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+label {
+  padding-left: 2px;
+  margin: 2px;
+  display: inline-block;
+}
+
+input, select, textarea {
+  border: 1px solid #d3d3d3;
+  border-radius: 3px;
+  background-color: #fff;
+  padding-left: 5px;
+  margin: 0 2px;
+  height: 26px;
+  vertical-align: middle;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    background-color: #fff;
+    border: 1px solid #d3d3d3;
+    margin: 2px;
+    padding: 5px;
+    color: #000;
+    border-radius: 3px;
+}
+
+.nome {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.qtde {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.chama {
+  margin: 5px 0px 5px 5px;
+  background-color: white;
+  border: 1px solid #d3d3d3;
+  border-radius: 3px;
+  padding: 3px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+button {
+  padding: 10px;
+  width: 90px;
+  border-radius: 3px;
+  border: 1px solid #d3d3d3;
+  margin: 2px;
+  height: 100%;
+  max-height: 40px;
+  background-color: #f9f9f9;
+  color: #000;
+  outline: 0;
+}
+
+.btn {
+  background-image: #65bf84;
+  background-color:#65bf84;
+  border-color:#65bf84;
+  color: white;
+}
+
+.group {
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 10px;
+  font-family:  Roboto,Tahoma,Geneva,Verdana,sans-serif;
+}
+
+.mdc-card__actions {
+  margin-left: 86%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  box-sizing: border-box;
+  min-height: 45px;
+  padding: 0px
 }
