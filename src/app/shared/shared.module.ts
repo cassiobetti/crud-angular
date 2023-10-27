@@ -6,6 +6,7 @@ import { ConfirmationDialogComponent } from './components/confirmation-dialog/co
 
 
 
+
 @NgModule({
   declarations: [
     ErrorDialogComponent,
@@ -13,11 +14,12 @@ import { ConfirmationDialogComponent } from './components/confirmation-dialog/co
   ],
   imports: [
     CommonModule,
-    AppMaterialModule
+    AppMaterialModule,
   ],
   exports: [
     ErrorDialogComponent,
     ConfirmationDialogComponent
-  ]
+  ],
+
 })
 export class SharedModule { }

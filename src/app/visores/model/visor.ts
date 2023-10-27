@@ -8,3 +8,11 @@ export interface Visor {
   atendimento: string;
   estatistica: string;
 }
+
+
+export interface Espec {
+  _id: string;
+  nomes: string;
+
+}
+

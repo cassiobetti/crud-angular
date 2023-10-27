@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpResponse } from '@angular/common/http';
 import { Visor } from '../model/visor';
 import { delay, first, tap } from 'rxjs/operators';
 
@@ -10,6 +10,8 @@ export class VisoresService {
 
   private readonly API = 'api/visores';
 
+  private readonly APIESP = '/assets/especialidades.json';
+
   constructor(private httpClient: HttpClient) { }
 
   list() {
@@ -19,6 +21,14 @@ export class VisoresService {
       //tap(visores => console.log(visores) )
     );
   }
+
+  
+
+
+
+
+
+
 
   loadById(id: string) {
     return this.httpClient.get<Visor>(`${this.API}/${id}`);

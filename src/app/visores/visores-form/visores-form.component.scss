@@ -102,6 +102,28 @@ button {
   color: white;
 }
 
+.btn2 {
+  width: auto;
+  text-align: center;
+  background-image: #65bf84;
+  background-color:#65bf84;
+  border-color:#65bf84;
+  color: white;
+  max-height: 20px;
+  padding: 4px 7px;
+  font-size: 10px;
+}
+
+.btn3 {
+  text-align: center;
+  background-image: #65bf84;
+  background-color:#65bf84;
+  border-color:#65bf84;
+  color: white;
+  max-height: 20px;
+  padding: 4px 7px;
+  font-size: 10px;
+}
 .group {
   font-size: 12px;
   font-weight: 400;
@@ -118,3 +140,8 @@ button {
   min-height: 45px;
   padding: 0px
 }
+
+.mat-button-toggle-checked{
+  background-color: #2979FF;
+  color: white;
+} 
