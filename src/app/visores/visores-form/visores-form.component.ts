@@ -2,14 +2,16 @@ import { Location } from '@angular/common';
 import { Component } from '@angular/core';
 import { NonNullableFormBuilder } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { MatTableModule } from '@angular/material/table';
-
-import { VisoresService } from '../services/visores.service';
 import { ActivatedRoute } from '@angular/router';
-import { Espec, Visor } from '../model/visor';
-import { Input } from '@angular/core';
+import { Observable } from 'rxjs';
+
 import { Especialidades } from '../model/especialidades';
 import { Salas } from '../model/salas';
+import { Visor } from '../model/visor';
+import { VisoresService } from '../services/visores.service';
+
+
+
 
 @Component({
   selector: 'app-visores-form',
@@ -23,18 +25,10 @@ import { Salas } from '../model/salas';
 
 export class VisoresFormComponent {
 
-  especialidades: Especialidades[] = [
-    {_id: '1', name: 'CARDIOLOGIA'},
-    {_id: '2', name: 'CARDIOLOGIA'},
-    {_id: '1', name: 'CARDIOLOGIA'}
-  ];
-  displayedColumns = ['delete','name'];
+  especialidades: Observable<Especialidades[]>;
+  displayedColumnsespec = ['delete','name'];
 
-  salas: Salas[] = [
-    {_id: '1', name: 'CARDIOLOGIA'},
-    {_id: '2', name: 'CARDIOLOGIA'},
-    {_id: '1', name: 'CARDIOLOGIA'}
-  ];
+  salas: Observable<Salas[]>;
   displayedColumnsSalas = ['delete','_id','name'];
 
   mostrarespec: boolean;
@@ -51,11 +45,27 @@ export class VisoresFormComponent {
     estatistica: ['']
   });
 
+  formespec = this.formBuilder.group({
+    _id: [''],
+    name: ['']
+  });
+
+  formsalas = this.formBuilder.group({
+    _id: [''],
+    name: ['']
+  });
+
  constructor(private formBuilder: NonNullableFormBuilder,
+  private visoresService: VisoresService,
   private service: VisoresService,
   private snackBar: MatSnackBar,
   private location: Location,
   private route: ActivatedRoute) {
+
+
+  this.especialidades = this.visoresService.Espec();
+
+  this.salas = this.visoresService.Salas();
 
   this.mostrarespec = false;
   this.mostrarsalas = false;
@@ -78,12 +88,37 @@ ngOnInit(): void {
     atendimento: visor.atendimento,
     estatistica: visor.estatistica
   });
+
+  const especialidades: Especialidades = this.route.snapshot.data['especialidades'];
+  this.formespec.setValue({
+    _id: especialidades._id,
+    name: especialidades.name,
+  });
+
+  const salas: Salas = this.route.snapshot.data['salas'];
+  this.formsalas.setValue({
+    _id: salas._id,
+    name: salas.name,
+  });
+
 }
 
  onSubmit() {
     this.service.save(this.form.value)
-        .subscribe(result => this.onSuccess(), error => this.onError());
+        .subscribe(result => this.onSuccess());
+
  }
+
+ onSubmit2() {
+  this.service.saveespec(this.formespec.value)
+  .subscribe(result2 => console.log(result2));
+ }
+
+ onSubmit3() {
+  this.service.savesalas(this.formsalas.value)
+  .subscribe(result3 => console.log(result3));
+ }
+
 
  onCancel() {
   this.location.back();
@@ -106,5 +141,6 @@ ngOnInit(): void {
  onClickMostrarSalas() {
   this.mostrarsalas = !this.mostrarsalas;
  }
+
 
 }

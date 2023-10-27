@@ -42,10 +42,8 @@
 
 <div class="bloco " style=" width: 200px; border: 1px solid #d3d3d3;  margin-left: 10px; align-self: flex-start; position: sticky; top: 5px;">
 	<div class="menu-bloco subtitulo" style="text-align: center; margin-bottom: 1px; padding-top: 10px;  background: #d3d3d3; height:30px;  font-size: medium;">Opções</div>
-
       <mat-button-toggle style="text-align: center; width: 200px; height: 35px; " (click)="onClickMostrarEspec()">Especialidades</mat-button-toggle>
       <mat-button-toggle style=" width: 200px; height: 35px; " (click)="onClickMostrarSalas()">Salas</mat-button-toggle>
-
  </div>
 
 <div *ngIf="mostrarespec" [class.active] ="" style="position: absolute; top: 225px; left: 210px; right: 5px; overflow-y: auto; bottom: 60px;">
@@ -55,20 +53,26 @@
   <div class="bloco " style="width: 98.9%;  border: 1px solid #d3d3d3;  margin-left: 10px; margin-top: 5px;">
 	  <div class="menu-bloco subtitulo" style="text-align: left;  padding-left: 5px;  background: #ffffff; font-size: medium;">
   </div>
-    <mat-select placeholder="-- Selecione -- " style="border: 1px solid #d3d3d3; width: 85%; margin: 5px; border-radius: 5px; ">
-      <mat-option value="1">Option 1</mat-option>
-      <mat-option value="2">Option 2</mat-option>
-      <mat-option value="3">Option 3</mat-option>
-    </mat-select>
-    <button class="btn2" >Adicionar</button>
+
+
+  <form [formGroup]="formespec">
+    <select formControlName="name" style="border: 1px solid #d3d3d3; width: 70%; margin: 5px; border-radius: 5px; ">
+      <option value="null"></option>
+      <option value="cardiologia">CARDIOLOGIA</option>
+      <option value="cirurgia">CIRURGIA</option>
+    </select>
+    <button class="btn2" (click)="onSubmit2()"  >Adicionar</button>
     <button class="btn3" >Adicionar Todas</button>
+   </form>
+
   </div>
+
   <div class="bloco " style="width: 98.9%; height: auto; border: 1px solid #d3d3d3;  margin-left: 10px; margin-top: 5px;">
     <mat-table [dataSource]="especialidades">
       <ng-container matColumnDef="delete">
        <mat-header-cell style="background: #d3d3d3;" *matHeaderCellDef>Excluir
         </mat-header-cell>
-          <mat-cell *matCellDef="let visor">
+          <mat-cell *matCellDef="let espec">
             <button  mat-icon-button color="warn" aria-label="Remover Visor">
              <mat-icon>delete</mat-icon>
             </button>
@@ -78,8 +82,8 @@
        <mat-header-cell style="background: #d3d3d3;"  *matHeaderCellDef> Nome </mat-header-cell>
          <mat-cell  *matCellDef="let espec"> {{ espec.name }} </mat-cell>
       </ng-container>
-       <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-     <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+       <mat-header-row *matHeaderRowDef="displayedColumnsespec"></mat-header-row>
+     <mat-row *matRowDef="let row; columns: displayedColumnsespec;"></mat-row>
     </mat-table>
   </div>
 </div>
@@ -91,15 +95,17 @@
   <div class="bloco " style="width: 98.9%;  border: 1px solid #d3d3d3;  margin-left: 10px; margin-top: 5px;">
 	  <div class="menu-bloco subtitulo" style="text-align: left;  padding-left: 5px;  background: #ffffff; font-size: medium;">
   </div>
-    <select placeholder="-- Selecione -- " style="border: 1px solid #d3d3d3; width: 92%; margin: 5px; border-radius: 5px; ">
-      <option value="1">Option 1</option>
-      <option value="2">Option 2</option>
-      <option value="3">Option 3</option>
+  <form [formGroup]="formsalas">
+    <select formControlName="name" style="border: 1px solid #d3d3d3; width: 70%; margin: 5px; border-radius: 5px; ">
+      <option value="null"></option>
+      <option value="cardiologia">CARDIOLOGIA</option>
+      <option value="cirurgia">CIRURGIA</option>
     </select>
-    <button class="btn2" >Adicionar</button>
+    <button class="btn2" (click)="onSubmit3()"  >Adicionar</button>
+   </form>
   </div>
   <div class="bloco " style="width: 98.9%; height: auto; border: 1px solid #d3d3d3;  margin-left: 10px; margin-top: 5px;">
-  <mat-table [dataSource]="salas">
+  <mat-table [dataSource]="especialidades">
     <ng-container matColumnDef="delete">
      <mat-header-cell style="background: #d3d3d3;"  *matHeaderCellDef>Excluir
       </mat-header-cell>

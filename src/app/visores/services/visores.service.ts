@@ -1,7 +1,11 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpResponse } from '@angular/common/http';
+import { first } from 'rxjs/operators';
+
+import { Salas } from '../model/salas';
 import { Visor } from '../model/visor';
-import { delay, first, tap } from 'rxjs/operators';
+import { Especialidades } from './../model/especialidades';
+
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +14,9 @@ export class VisoresService {
 
   private readonly API = 'api/visores';
 
-  private readonly APIESP = '/assets/especialidades.json';
+  private readonly APIESP = 'api/especialidades';
+
+  private readonly APISALAS = 'api/salas';
 
   constructor(private httpClient: HttpClient) { }
 
@@ -21,13 +27,6 @@ export class VisoresService {
       //tap(visores => console.log(visores) )
     );
   }
-
-  
-
-
-
-
-
 
 
   loadById(id: string) {
@@ -52,4 +51,29 @@ export class VisoresService {
   remove(id: String){
     return this.httpClient.delete(`${this.API}/${id}`);
   }
-}
+
+  Espec() {
+    return this.httpClient.get<Especialidades[]>(this.APIESP)
+    .pipe(
+      first(),
+    );
+  }
+
+  saveespec(recordespec:Partial<Especialidades>) {
+    return this.httpClient.post<Especialidades>(this.APIESP, recordespec);
+  }
+
+  Salas() {
+    return this.httpClient.get<Salas[]>(this.APISALAS)
+    .pipe(
+      first(),
+    );
+  }
+
+  savesalas(recordsalas:Partial<Salas>) {
+    return this.httpClient.post<Salas>(this.APISALAS, recordsalas);
+  }
+
+ }
+
+

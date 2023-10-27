@@ -10,9 +10,4 @@ export interface Visor {
 }
 
 
-export interface Espec {
-  _id: string;
-  nomes: string;
-
-}
 
