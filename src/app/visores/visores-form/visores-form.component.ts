@@ -1,5 +1,5 @@
 import { Location } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { NonNullableFormBuilder } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute } from '@angular/router';
@@ -9,6 +9,10 @@ import { Especialidades } from '../model/especialidades';
 import { Salas } from '../model/salas';
 import { Visor } from '../model/visor';
 import { VisoresService } from '../services/visores.service';
+import { ConfirmationDialogComponent } from 'src/app/shared/components/confirmation-dialog/confirmation-dialog.component';
+import { ErrorDialogComponent } from 'src/app/shared/components/error-dialog/error-dialog.component';
+import { MatDialog } from '@angular/material/dialog';
+import { FaIconLibrary, FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 
 
@@ -25,11 +29,13 @@ import { VisoresService } from '../services/visores.service';
 
 export class VisoresFormComponent {
 
+
+
   especialidades: Observable<Especialidades[]>;
   displayedColumnsespec = ['delete','name'];
 
   salas: Observable<Salas[]>;
-  displayedColumnsSalas = ['delete','_id','name'];
+  displayedColumnssalas = ['delete','_id','name'];
 
   mostrarespec: boolean;
   mostrarsalas: boolean;
@@ -60,7 +66,12 @@ export class VisoresFormComponent {
   private service: VisoresService,
   private snackBar: MatSnackBar,
   private location: Location,
-  private route: ActivatedRoute) {
+  private route: ActivatedRoute,
+  public dialog: MatDialog
+  ) {
+
+
+  
 
 
   this.especialidades = this.visoresService.Espec();
@@ -111,12 +122,13 @@ ngOnInit(): void {
 
  onSubmit2() {
   this.service.saveespec(this.formespec.value)
-  .subscribe(result2 => console.log(result2));
+  .subscribe(result2 => this.onSuccess1());
+
  }
 
  onSubmit3() {
   this.service.savesalas(this.formsalas.value)
-  .subscribe(result3 => console.log(result3));
+  .subscribe(result3 => this.onSuccess2());
  }
 
 
@@ -127,6 +139,16 @@ ngOnInit(): void {
  private onSuccess() {
   this.snackBar.open('Visor salvo com sucesso!','', {duration: 1000 });
   this.onCancel();
+ }
+
+ private onSuccess1() {
+  this.snackBar.open('Visor salvo com sucesso!','', {duration: 1000 });
+  this.refresh();
+ }
+
+ private onSuccess2() {
+  this.snackBar.open('Visor salvo com sucesso!','', {duration: 1000 });
+  this.refresh2();
  }
 
 
@@ -141,6 +163,34 @@ ngOnInit(): void {
  onClickMostrarSalas() {
   this.mostrarsalas = !this.mostrarsalas;
  }
+
+
+
+onRemoveEspec(espec: Especialidades) {
+  this.visoresService.removeespec(espec._id).subscribe(
+    () => {
+      this.refresh();
+    }
+  )
+}
+
+onRemoveSalas(salas: Salas) {
+  this.visoresService.removesalas(salas._id).subscribe(
+    () => {
+      this.refresh2();
+    }
+  )
+}
+
+refresh() {
+  this.especialidades = this.visoresService.Espec();
+
+}
+
+refresh2() {
+  this.salas = this.visoresService.Salas();
+
+}
 
 
 }

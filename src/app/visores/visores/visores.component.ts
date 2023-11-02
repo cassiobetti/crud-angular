@@ -9,6 +9,7 @@ import { ErrorDialogComponent } from '../../shared/components/error-dialog/error
 import { Visor } from '../model/visor';
 import { VisoresService } from '../services/visores.service';
 import { ConfirmationDialogComponent } from 'src/app/shared/components/confirmation-dialog/confirmation-dialog.component';
+import { Especialidades } from '../model/especialidades';
 
 @Component({
   selector: 'app-visores',
@@ -55,7 +56,7 @@ export class VisoresComponent {
     this.router.navigate(['edit',visor._id], {relativeTo: this.route});
   }
 
- 
+
 
   onRemove(visor: Visor) {
     const dialogRef = this.dialog.open(ConfirmationDialogComponent, {
@@ -78,4 +79,6 @@ export class VisoresComponent {
       }
     });
   }
+
+  
 }

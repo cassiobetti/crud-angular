@@ -52,6 +52,8 @@ export class VisoresService {
     return this.httpClient.delete(`${this.API}/${id}`);
   }
 
+
+
   Espec() {
     return this.httpClient.get<Especialidades[]>(this.APIESP)
     .pipe(
@@ -63,6 +65,12 @@ export class VisoresService {
     return this.httpClient.post<Especialidades>(this.APIESP, recordespec);
   }
 
+  removeespec(id: String){
+    return this.httpClient.delete(`${this.APIESP}/${id}`);
+  }
+
+
+
   Salas() {
     return this.httpClient.get<Salas[]>(this.APISALAS)
     .pipe(
@@ -72,6 +80,10 @@ export class VisoresService {
 
   savesalas(recordsalas:Partial<Salas>) {
     return this.httpClient.post<Salas>(this.APISALAS, recordsalas);
+  }
+
+  removesalas(id: String){
+    return this.httpClient.delete(`${this.APISALAS}/${id}`);
   }
 
  }

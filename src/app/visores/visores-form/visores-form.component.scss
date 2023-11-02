@@ -59,6 +59,19 @@ form {
     border-radius: 3px;
 }
 
+.formespec {
+    display: flex;
+    flex-direction: row;
+    background-color: #fff;
+    border: 1px solid #d3d3d3;
+    margin: 2px;
+    padding: 5px;
+    color: #000;
+    border-radius: 3px;
+}
+
+
+
 .nome {
   display: flex;
   flex-direction: row;
@@ -103,12 +116,13 @@ button {
 }
 
 .btn2 {
-  width: auto;
+  width: 60px;
   text-align: center;
   background-image: #65bf84;
   background-color:#65bf84;
   border-color:#65bf84;
   color: white;
+  margin-top: 7px;
   max-height: 20px;
   padding: 4px 7px;
   font-size: 10px;
@@ -120,10 +134,13 @@ button {
   background-color:#65bf84;
   border-color:#65bf84;
   color: white;
+  margin-top: 7px;
   max-height: 20px;
   padding: 4px 7px;
   font-size: 10px;
 }
+
+
 .group {
   font-size: 12px;
   font-weight: 400;
@@ -144,4 +161,164 @@ button {
 .mat-button-toggle-checked{
   background-color: #2979FF;
   color: white;
-} 
+}
+
+.select {
+  display: flex;
+  flex-direction: row;
+  border: 1px solid #d3d3d3;
+  width: 85%;
+  margin: 5px;
+  border-radius: 5px;
+}
+
+.selectsalas {
+  display: flex;
+  flex-direction: row;
+  border: 1px solid #d3d3d3;
+  width: 85%;
+  margin: 5px;
+  border-radius: 5px;
+}
+
+.especdados {
+  border: 1px solid #d3d3d3;
+  width: auto;
+  margin-left: 10px;
+}
+
+.blocoespec {
+  width: 98.8%;
+  height: auto;
+  border: 1px  solid #d3d3d3;
+  margin: 5px;
+  border-right: 12px;
+}
+
+.blocoselect {
+  width: 99.3%;
+  margin-left: 8px;
+}
+
+.titleespec {
+  text-align: left;
+  padding-top: 10px;
+  padding-left: 5px;
+  background: #d3d3d3;
+  height:30px;
+  font-size: medium;
+}
+
+.divtitle {
+  width: 98.8%;
+  border: 1px solid #d3d3d3;
+  margin-left: 10px;
+  margin-top: 5px;
+}
+
+.especialidade {
+  position: absolute;  
+  top: 225px;
+  left: 210px;
+  right: 5px;
+  overflow-y: auto;
+  bottom: 60px;
+}
+
+.salas {
+  position: absolute;  
+  top: 225px;
+  left: 210px;
+  right: 5px;
+  overflow-y: auto;
+  bottom: 60px;
+}
+
+.delete {
+  width: 5%;  
+  text-align: center,left; 
+  border-top: 1px solid #acaaaa;
+  border-bottom: 1px solid #acaaaa;
+  border-right: 1px solid #acaaaa;
+  border-left: 1px solid #acaaaa;
+  background-color: #e2e2e2;
+}
+
+.nomeespec {
+  border: 1px solid #acaaaa;
+  background-color: #e2e2e2;
+}
+
+
+
+.dadosespec {  
+  border-bottom: 1px solid #acaaaa;
+  border-left: 1px solid #acaaaa;
+  border-right: 1px solid #acaaaa;
+}
+
+.btndel {
+  border-bottom: 1px solid #acaaaa;
+  border-left: 1px solid #acaaaa;
+}
+
+.salasdados {
+  border: 1px solid #d3d3d3;
+  width: auto;
+  margin-left: 10px;
+}
+
+.blocosalas {
+  width: 98.8%;
+  height: auto;
+  border: 1px  solid #d3d3d3;
+  margin: 5px;
+  border-right: 12px;
+}
+
+.blocoselect {
+  width: 99.3%;
+  margin-left: 8px;
+}
+
+.titlesalas {
+  text-align: left;
+  padding-top: 10px;
+  padding-left: 5px;
+  background: #d3d3d3;
+  height:30px;
+  font-size: medium;
+}
+
+
+
+.salas {
+  position: absolute;  
+  top: 225px;
+  left: 210px;
+  right: 5px;
+  overflow-y: auto;
+  bottom: 60px;
+}
+
+
+
+.nomesalas {
+  border: 1px solid #acaaaa;
+  background-color: #e2e2e2;
+}
+
+.idsalas {
+  border-top: 1px solid #acaaaa;
+  border-bottom: 1px solid #acaaaa;
+  background-color: #e2e2e2;
+}
+
+
+
+.dadossalas {  
+  border-bottom: 1px solid #acaaaa;  
+  border-right: 1px solid #acaaaa;
+}
+
+
