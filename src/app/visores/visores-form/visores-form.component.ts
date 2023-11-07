@@ -1,18 +1,17 @@
+
 import { Location } from '@angular/common';
-import { Component, EventEmitter, Output } from '@angular/core';
-import { NonNullableFormBuilder } from '@angular/forms';
+import { Component } from '@angular/core';
+import { NgForm, NonNullableFormBuilder, Validators } from '@angular/forms';
+import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
+import { ConfirmationDialogComponent } from 'src/app/shared/components/confirmation-dialog/confirmation-dialog.component';
 
 import { Especialidades } from '../model/especialidades';
 import { Salas } from '../model/salas';
 import { Visor } from '../model/visor';
 import { VisoresService } from '../services/visores.service';
-import { ConfirmationDialogComponent } from 'src/app/shared/components/confirmation-dialog/confirmation-dialog.component';
-import { ErrorDialogComponent } from 'src/app/shared/components/error-dialog/error-dialog.component';
-import { MatDialog } from '@angular/material/dialog';
-import { FaIconLibrary, FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 
 
@@ -42,7 +41,7 @@ export class VisoresFormComponent {
 
   form = this.formBuilder.group({
     _id: [''],
-    nome: [''],
+    nome: ['',[Validators.required, Validators.minLength(5)]],
     ativo: [''],
     chamadas: [''],
     tempo: [''],
@@ -53,12 +52,12 @@ export class VisoresFormComponent {
 
   formespec = this.formBuilder.group({
     _id: [''],
-    name: ['']
+    name: ['',[Validators.required, Validators.minLength(5)]],
   });
 
   formsalas = this.formBuilder.group({
     _id: [''],
-    name: ['']
+    name: ['',[Validators.required, Validators.minLength(5)]],
   });
 
  constructor(private formBuilder: NonNullableFormBuilder,
@@ -71,14 +70,14 @@ export class VisoresFormComponent {
   ) {
 
 
-  
+
 
 
   this.especialidades = this.visoresService.Espec();
 
   this.salas = this.visoresService.Salas();
 
-  this.mostrarespec = false;
+  this.mostrarespec = true;
   this.mostrarsalas = false;
 
 
@@ -115,16 +114,21 @@ ngOnInit(): void {
 }
 
  onSubmit() {
+
     this.service.save(this.form.value)
         .subscribe(result => this.onSuccess());
+   }
 
- }
+
 
  onSubmit2() {
   this.service.saveespec(this.formespec.value)
   .subscribe(result2 => this.onSuccess1());
-
  }
+
+ 
+
+ 
 
  onSubmit3() {
   this.service.savesalas(this.formsalas.value)
@@ -142,12 +146,10 @@ ngOnInit(): void {
  }
 
  private onSuccess1() {
-  this.snackBar.open('Visor salvo com sucesso!','', {duration: 1000 });
   this.refresh();
  }
 
  private onSuccess2() {
-  this.snackBar.open('Visor salvo com sucesso!','', {duration: 1000 });
   this.refresh2();
  }
 
@@ -167,20 +169,34 @@ ngOnInit(): void {
 
 
 onRemoveEspec(espec: Especialidades) {
+  const dialogRef = this.dialog.open(ConfirmationDialogComponent, {
+    data: 'Confirma exclusão de registro?',
+  });
+  dialogRef.afterClosed().subscribe((result: boolean) => {
+    if (result) {
   this.visoresService.removeespec(espec._id).subscribe(
     () => {
       this.refresh();
-    }
-  )
-}
+          },
+        );
+      }
+    });
+  }
 
 onRemoveSalas(salas: Salas) {
+  const dialogRef = this.dialog.open(ConfirmationDialogComponent, {
+    data: 'Confirma exclusão de registro?',
+  });
+  dialogRef.afterClosed().subscribe((result: boolean) => {
+    if (result) {
   this.visoresService.removesalas(salas._id).subscribe(
     () => {
       this.refresh2();
-    }
-  )
-}
+          },
+        );
+      }
+    });
+  }
 
 refresh() {
   this.especialidades = this.visoresService.Espec();
@@ -192,5 +208,34 @@ refresh2() {
 
 }
 
+getErrorMessage(fieldName: string) {
+  const field = this.form.get(fieldName);
+
+  if(field?.hasError('required')) {
+    return 'Campo Obrigatório';
+  }
+
+  return 'Campo Invalido'
+}
+
+getErrorMessage1(fieldNome: string) {
+  const field = this.formespec.get(fieldNome);
+
+  if(field?.hasError('required')) {
+    return 'Campo Obrigatório';
+  }
+
+  return 'Campo Invalido'
+}
+
+getErrorMessage2(fieldNome: string) {
+  const field = this.formsalas.get(fieldNome);
+
+  if(field?.hasError('required')) {
+    return 'Campo Obrigatório';
+  }
+
+  return 'Campo Invalido'
+}
 
 }

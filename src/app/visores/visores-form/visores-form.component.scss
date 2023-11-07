@@ -70,6 +70,17 @@ form {
     border-radius: 3px;
 }
 
+.formsalas {
+  display: flex;
+  flex-direction: row;
+  background-color: #fff;
+  border: 1px solid #d3d3d3;
+  margin: 2px;
+  padding: 5px;
+  color: #000;
+  border-radius: 3px;
+}
+
 
 
 .nome {
@@ -176,7 +187,7 @@ button {
   display: flex;
   flex-direction: row;
   border: 1px solid #d3d3d3;
-  width: 85%;
+  width: 90%;
   margin: 5px;
   border-radius: 5px;
 }
@@ -309,16 +320,14 @@ button {
 }
 
 .idsalas {
-  border-top: 1px solid #acaaaa;
-  border-bottom: 1px solid #acaaaa;
+  border: 1px solid #acaaaa;
   background-color: #e2e2e2;
 }
 
 
 
 .dadossalas {  
-  border-bottom: 1px solid #acaaaa;  
-  border-right: 1px solid #acaaaa;
+  border: 1px solid #acaaaa; 
 }
 
 

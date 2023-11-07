@@ -4,12 +4,11 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Observable, of } from 'rxjs';
 import { catchError } from 'rxjs/operators';
+import { ConfirmationDialogComponent } from 'src/app/shared/components/confirmation-dialog/confirmation-dialog.component';
 
 import { ErrorDialogComponent } from '../../shared/components/error-dialog/error-dialog.component';
 import { Visor } from '../model/visor';
 import { VisoresService } from '../services/visores.service';
-import { ConfirmationDialogComponent } from 'src/app/shared/components/confirmation-dialog/confirmation-dialog.component';
-import { Especialidades } from '../model/especialidades';
 
 @Component({
   selector: 'app-visores',
@@ -80,5 +79,7 @@ export class VisoresComponent {
     });
   }
 
-  
+
+
+
 }

@@ -55,8 +55,12 @@
     <form class="formespec" [formGroup]="formespec">
       <select class="select" formControlName="name">
         <option value="null"></option>
-        <option value="cardiologia">CARDIOLOGIA</option>
-        <option value="cirurgia">CIRURGIA</option>
+          <option value="ACUPUNTURA">ACUPUNTURA</option>
+          <option value="CARDIOLOGIA">CARDIOLOGIA</option>
+          <option value="CIRURGIA">CIRURGIA</option>
+          <option value="CLINICA MEDICA">CLINICA MEDICA</option>
+          <option value="DERMATOLOGIA">DERMATOLOGIA</option>
+          <option value="FISIOTERAPIA">FISIOTERAPIA</option>
       </select>
       <button class="btn2" (click)="onSubmit2()"  >Adicionar</button>
       <button class="btn3"  >Adicionar Todas</button>
@@ -72,7 +76,7 @@
             <button  (click)="onRemoveEspec(espec)" mat-icon-button color="warn"  aria-label="Remover Visor">
               <mat-icon class="icondel">delete</mat-icon>
             </button>
-          </mat-cell>        
+          </mat-cell>
       </ng-container>
       <ng-container   matColumnDef="name">
        <mat-header-cell class="nomeespec"  *matHeaderCellDef> Nome </mat-header-cell>
@@ -94,10 +98,13 @@
       <form class="formsalas" [formGroup]="formsalas">
         <select class="selectsalas" formControlName="name">
           <option value="null"></option>
-          <option value="cardiologia">CARDIOLOGIA</option>
-          <option value="cirurgia">CIRURGIA</option>
+          <option value="APLICACAO DE MEDICAMENTO">APLICACAO DE MEDICAMENTO</option>
+          <option value="COMPARECER A RECEPCAO">COMPARECER A RECEPCAO</option>
+          <option value="SALA DE ATENDIMENTO">SALA DE ATENDIMENTO</option>
+          <option value="SALA TREINAMENTO">SALA TREINAMENTO</option>
+          <option value="SALA ESPERA">SALA ESPERA</option>
         </select>
-        <button class="btn2" (click)="onSubmit3()">Adicionar</button>        
+        <button class="btn3" (click)="onSubmit3()">Adicionar</button>
        </form>
     </div>
     <div class="salasdados">
@@ -110,7 +117,7 @@
               <button  (click)="onRemoveSalas(salas)" mat-icon-button color="warn"  aria-label="Remover Visor">
                 <mat-icon class="icondel">delete</mat-icon>
               </button>
-            </mat-cell>        
+            </mat-cell>
         </ng-container>
         <ng-container   matColumnDef="_id">
           <mat-header-cell class="idsalas"  *matHeaderCellDef> ID </mat-header-cell>
