@@ -14,21 +14,15 @@ import { Visor } from '../model/visor';
 import { VisoresService } from '../services/visores.service';
 
 
-
-
 @Component({
   selector: 'app-visores-form',
   templateUrl: './visores-form.component.html',
   styleUrls: ['./visores-form.component.scss'],
-
-
 })
 
 
 
 export class VisoresFormComponent {
-
-
 
   especialidades: Observable<Especialidades[]>;
   displayedColumnsespec = ['delete','name'];
@@ -69,22 +63,12 @@ export class VisoresFormComponent {
   public dialog: MatDialog
   ) {
 
-
-
-
-
   this.especialidades = this.visoresService.Espec();
-
   this.salas = this.visoresService.Salas();
-
   this.mostrarespec = true;
   this.mostrarsalas = false;
 
-
-
  }
-
-
 
 ngOnInit(): void {
   const visor: Visor = this.route.snapshot.data['visor'];
@@ -113,12 +97,11 @@ ngOnInit(): void {
 
 }
 
- onSubmit() {
 
+ onSubmit() {
     this.service.save(this.form.value)
         .subscribe(result => this.onSuccess());
    }
-
 
 
  onSubmit2() {
@@ -126,9 +109,6 @@ ngOnInit(): void {
   .subscribe(result2 => this.onSuccess1());
  }
 
- 
-
- 
 
  onSubmit3() {
   this.service.savesalas(this.formsalas.value)
@@ -140,14 +120,17 @@ ngOnInit(): void {
   this.location.back();
  }
 
+
  private onSuccess() {
   this.snackBar.open('Visor salvo com sucesso!','', {duration: 1000 });
   this.onCancel();
  }
 
+
  private onSuccess1() {
   this.refresh();
  }
+
 
  private onSuccess2() {
   this.refresh2();
@@ -158,14 +141,15 @@ ngOnInit(): void {
   this.snackBar.open('Erro ao salvar visor.','', {duration: 1000 });
  }
 
+
  onClickMostrarEspec() {
   this.mostrarespec = !this.mostrarespec;
  }
 
+
  onClickMostrarSalas() {
   this.mostrarsalas = !this.mostrarsalas;
  }
-
 
 
 onRemoveEspec(espec: Especialidades) {
@@ -182,6 +166,7 @@ onRemoveEspec(espec: Especialidades) {
       }
     });
   }
+  
 
 onRemoveSalas(salas: Salas) {
   const dialogRef = this.dialog.open(ConfirmationDialogComponent, {

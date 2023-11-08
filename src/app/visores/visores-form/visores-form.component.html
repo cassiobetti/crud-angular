@@ -131,16 +131,15 @@
        <mat-row  *matRowDef="let row; columns: displayedColumnssalas;"></mat-row>
       </mat-table>
     </div>
-  </div>
+    </div>
   </div>
 
 
 <mat-card class="btn-new">
-<mat-card-actions>
-  <button class="btn" (click)="onSubmit()">Gravar</button>
-  <button (click)="onCancel()">Fechar</button>
-
-</mat-card-actions>
+  <mat-card-actions>
+   <button class="btn" (click)="onSubmit()">Gravar</button>
+    <button (click)="onCancel()">Fechar</button>
+  </mat-card-actions>
 </mat-card>
 
 

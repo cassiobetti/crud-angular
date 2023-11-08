@@ -13,9 +13,7 @@ import { Especialidades } from './../model/especialidades';
 export class VisoresService {
 
   private readonly API = 'api/visores';
-
   private readonly APIESP = 'api/especialidades';
-
   private readonly APISALAS = 'api/salas';
 
   constructor(private httpClient: HttpClient) { }
