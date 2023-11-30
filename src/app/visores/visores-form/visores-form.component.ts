@@ -166,7 +166,7 @@ onRemoveEspec(espec: Especialidades) {
       }
     });
   }
-  
+
 
 onRemoveSalas(salas: Salas) {
   const dialogRef = this.dialog.open(ConfirmationDialogComponent, {
