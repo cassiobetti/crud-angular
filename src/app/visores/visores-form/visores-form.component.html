@@ -1,146 +1,159 @@
-
 <div class="group">
   <form [formGroup]="form" class="min-widht">
-      <div class="nome" style="align-items: flex-end;">
-       		<div style="width: 95%; padding: 5px 3px 3px 3px;">
-       			 <label> Nome </label>
-        		 <input type="text" style="width: 99%;" formControlName="nome">
-		      </div>
-        <div style="padding: 5px 3px 3px 3px;">
-       		 <input type="checkbox" formControlName="ativo">
-		       Ativo
- 	      </div>
+    <div class="nome" style="align-items: flex-end;">
+      <div style="width: 95%; padding: 5px 3px 3px 3px;">
+        <label> Nome </label>
+        <input type="text" style="width: 99%;" formControlName="nome">
       </div>
+      <div style="padding: 5px 3px 3px 3px;">
+        <input type="checkbox" formControlName="ativo">
+        Ativo
+      </div>
+    </div>
 
     <div class="nome" style="align-items: flex-end;">
-	    <div style="width: 49%; padding: 5px 3px 3px 3px;">
-        <label > Qtde de chamadas </label>
-		    <input type="number" style="width: 99%;" formControlName="chamadas">
+      <div style="width: 49%; padding: 5px 3px 3px 3px;">
+        <label> Qtde de chamadas </label>
+        <input type="number" style="width: 99%;" formControlName="chamadas">
       </div>
-	    <div style="width: 50%; padding: 5px 3px 3px 3px;">
+      <div style="width: 50%; padding: 5px 3px 3px 3px;">
         <label> Tempo entre uma chamada e outra (segundos) </label>
-        <input type="number" style="width: 99%;"  formControlName="tempo">
+        <input type="number" style="width: 99%;" formControlName="tempo">
       </div>
     </div>
 
     <div class="chama" style="align-items: flex-end;">
-	    <div style="padding: 5px 3px 3px 3px;">
+      <div style="padding: 5px 3px 3px 3px;">
         <input type="checkbox" formControlName="recepcao">
-		    Chama Recepção (PA)
-	    </div>
-	    <div style="padding: 5px 3px 3px 3px;">
+        Chama Recepção (PA)
+      </div>
+      <div style="padding: 5px 3px 3px 3px;">
         <input type="checkbox" formControlName="atendimento">
-		    Chama Pré Atendimento (PA)
-	    </div>
-	    <div style="padding: 5px 3px 3px 3px;">
+        Chama Pré Atendimento (PA)
+      </div>
+      <div style="padding: 5px 3px 3px 3px;">
         <input type="checkbox" formControlName="estatistica">
-		    Gera Estatística (PA)
-		  </div>
+        Gera Estatística (PA)
+      </div>
     </div>
 
-  </form>
-</div>
+    <div class="bloco "
+      style=" width: 200px; border: 1px solid #d3d3d3; margin-top: 5px; margin-left: -5px; align-self: flex-start; position: sticky; top: 5px;">
+      <div class="menu-bloco subtitulo"
+        style="text-align: center; margin-bottom: 1px; padding-top: 10px;  background: #d3d3d3; height:30px;  font-size: medium;">
+        Opções</div>
+      <mat-button-toggle (click)="onClickMostrarEspec() "><i class="fa fa-medkit" aria-hidden="true"></i>
+        Especialidades</mat-button-toggle>
+      <mat-button-toggle (click)="onClickMostrarSalas()"><i class="fa fa-home" aria-hidden="true"></i>
+        Salas</mat-button-toggle>
+    </div>
 
-<div class="bloco " style=" width: 200px; border: 1px solid #d3d3d3;  margin-left: 10px; align-self: flex-start; position: sticky; top: 5px;">
-	<div class="menu-bloco subtitulo" style="text-align: center; margin-bottom: 1px; padding-top: 10px;  background: #d3d3d3; height:30px;  font-size: medium;">Opções</div>
-      <mat-button-toggle style="text-align: center; width: 200px; height: 35px; " (click)="onClickMostrarEspec()">Especialidades</mat-button-toggle>
-      <mat-button-toggle style=" width: 200px; height: 35px; " (click)="onClickMostrarSalas()">Salas</mat-button-toggle>
- </div>
+    <div class="especialidade" *ngIf="mostrarespec">
+      <div class="divtitle">
+        <div class="titleespec">Especialidades</div>
+      </div>
 
-<div class="especialidade" *ngIf="mostrarespec"  >
-  <div class="divtitle " >
-	  <div class="titleespec" >Especialidades</div>
+      <div class="blocoselect">
+        <form class="formespec" [formGroup]="form">
+          <tr class="selecttr">
+            <select class="select" formControlName="espec">
+              <option value="null"></option>
+              <option value="ACUPUNTURA">ACUPUNTURA</option>
+              <option value="CARDIOLOGIA">CARDIOLOGIA</option>
+              <option value="CIRURGIA">CIRURGIA</option>
+              <option value="CLINICA MEDICA">CLINICA MEDICA</option>
+              <option value="DERMATOLOGIA">DERMATOLOGIA</option>
+              <option value="FISIOTERAPIA">FISIOTERAPIA</option>
+            </select>
+          </tr>
+          <button class="btn2" (click)="addNewEspec()">Adicionar</button>
+          <button class="btn3">Adicionar Todas</button>
+        </form>
+      </div>
+
+      <div class="especdados">
+          <table class="table" formArrayName="espec" >
+            <thead>
+              <tr >
+                <th>EXCLUIR</th>
+                <th class="thnome">NOME</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let especs of getEspecsFormArray(); let i = index" [formGroupName]="i">
+                <td>
+                  <button icon-button color="warn" (click)="removeEspec(i)">
+                  <mat-icon aria-label="Remover ">delete</mat-icon>
+                  </button>
+                </td>
+                <td>
+                  <select class="selecttd" formControlName="nome">
+                    <option hidden></option>
+                    <option value="ACUPUNTURA">ACUPUNTURA</option>
+                    <option value="CARDIOLOGIA">CARDIOLOGIA</option>
+                    <option value="CIRURGIA">CIRURGIA</option>
+                    <option value="CLINICA MEDICA">CLINICA MEDICA</option>
+                    <option value="DERMATOLOGIA">DERMATOLOGIA</option>
+                    <option value="FISIOTERAPIA">FISIOTERAPIA</option>
+                  </select>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+      </div>
+    </div>
+
+
+    <div class="salas" *ngIf="mostrarsalas">
+      <div class="divtitle">
+        <div class="titlesalas">Salas</div>
+      </div>
+      <div class="blocoselect">
+        <form class="formsalas">
+          <select class="select" formControlName="salas">
+            <option hidden></option>
+            <option value="SALA CONSULTA">SALA CONSULTA</option>
+            <option value="SALA CARDIOLOGIA"> SALA CARDIOLOGIA</option>
+            <option value="SALA DE EMERGENCIA">SALA DE EMERGENCIA</option>
+            <option value="SALA DE ENFERMAGEM">SALA DE ENFERMAGEM</option>
+          </select>
+          <button class="btn2" (click)="addNewSalas()">Adicionar</button>
+        </form>
+      </div>
+
+      <div class="salasdados">
+        <table class="table" formArrayName="salas" >
+          <thead>
+            <tr >
+              <th>EXCLUIR</th>
+              <th class="thnome">NOME</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let salas of getSalasFormArray(); let i = index" [formGroupName]="i">
+              <td>
+                <button icon-button color="warn" (click)="removeSalas(i)">
+                <mat-icon aria-label="Remover ">delete</mat-icon>
+                </button>
+              </td>
+              <td>
+                <select class="selecttd" formControlName="nome">
+                  <option hidden></option>
+                  <option value="SALA CONSULTA">SALA CONSULTA</option>
+                  <option value="SALA CARDIOLOGIA"> SALA CARDIOLOGIA</option>
+                  <option value="SALA DE EMERGENCIA">SALA DE EMERGENCIA</option>
+                  <option value="SALA DE ENFERMAGEM">SALA DE ENFERMAGEM</option>
+                </select>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+    </div>
   </div>
-  <div class="blocoselect">
-    <form class="formespec" [formGroup]="formespec">
-      <select class="select" formControlName="name">
-        <option value="null"></option>
-          <option value="ACUPUNTURA">ACUPUNTURA</option>
-          <option value="CARDIOLOGIA">CARDIOLOGIA</option>
-          <option value="CIRURGIA">CIRURGIA</option>
-          <option value="CLINICA MEDICA">CLINICA MEDICA</option>
-          <option value="DERMATOLOGIA">DERMATOLOGIA</option>
-          <option value="FISIOTERAPIA">FISIOTERAPIA</option>
-      </select>
-      <button class="btn2" (click)="onSubmit2()"  >Adicionar</button>
-      <button class="btn3"  >Adicionar Todas</button>
-     </form>
-  </div>
-  <div class="especdados">
-  <div class="blocoespec " >
-    <mat-table class="table"  [dataSource]="especialidades">
-      <ng-container   matColumnDef="delete">
-       <mat-header-cell class="delete"   *matHeaderCellDef>Excluir
-         </mat-header-cell>
-          <mat-cell class="btndel" *matCellDef="let espec">
-            <button  (click)="onRemoveEspec(espec)" mat-icon-button color="warn"  aria-label="Remover Visor">
-              <mat-icon class="icondel">delete</mat-icon>
-            </button>
-          </mat-cell>
-      </ng-container>
-      <ng-container   matColumnDef="name">
-       <mat-header-cell class="nomeespec"  *matHeaderCellDef> Nome </mat-header-cell>
-         <mat-cell  class="dadosespec" *matCellDef="let espec"> {{ espec.name }} </mat-cell>
-      </ng-container>
-       <mat-header-row  *matHeaderRowDef="displayedColumnsespec"></mat-header-row>
-     <mat-row  *matRowDef="let row; columns: displayedColumnsespec;"></mat-row>
-    </mat-table>
-  </div>
-</div>
-</div>
-
-
-  <div class="salas" *ngIf="mostrarsalas"  >
-    <div class="divtitle " >
-      <div class="titlesalas" >Salas</div>
-    </div>
-    <div class="blocoselect">
-      <form class="formsalas" [formGroup]="formsalas">
-        <select class="selectsalas" formControlName="name">
-          <option value="null"></option>
-          <option value="APLICACAO DE MEDICAMENTO">APLICACAO DE MEDICAMENTO</option>
-          <option value="COMPARECER A RECEPCAO">COMPARECER A RECEPCAO</option>
-          <option value="SALA DE ATENDIMENTO">SALA DE ATENDIMENTO</option>
-          <option value="SALA TREINAMENTO">SALA TREINAMENTO</option>
-          <option value="SALA ESPERA">SALA ESPERA</option>
-        </select>
-        <button class="btn3" (click)="onSubmit3()">Adicionar</button>
-       </form>
-    </div>
-    <div class="salasdados">
-    <div class="blocosalas " >
-      <mat-table class="table"  [dataSource]="salas">
-        <ng-container   matColumnDef="delete">
-         <mat-header-cell class="delete"   *matHeaderCellDef>Excluir
-           </mat-header-cell>
-            <mat-cell class="btndel" *matCellDef="let salas">
-              <button  (click)="onRemoveSalas(salas)" mat-icon-button color="warn"  aria-label="Remover Visor">
-                <mat-icon class="icondel">delete</mat-icon>
-              </button>
-            </mat-cell>
-        </ng-container>
-        <ng-container   matColumnDef="_id">
-          <mat-header-cell class="idsalas"  *matHeaderCellDef> ID </mat-header-cell>
-            <mat-cell  class="dadossalas" *matCellDef="let salas">  {{ salas._id }} </mat-cell>
-         </ng-container>
-        <ng-container   matColumnDef="name">
-         <mat-header-cell class="nomesalas"  *matHeaderCellDef> Nome </mat-header-cell>
-           <mat-cell  class="dadossalas" *matCellDef="let salas"> {{ salas.name }} </mat-cell>
-        </ng-container>
-         <mat-header-row  *matHeaderRowDef="displayedColumnssalas"></mat-header-row>
-       <mat-row  *matRowDef="let row; columns: displayedColumnssalas;"></mat-row>
-      </mat-table>
-    </div>
-    </div>
-  </div>
-
 
 <mat-card class="btn-new">
   <mat-card-actions>
-   <button class="btn" (click)="onSubmit()">Gravar</button>
+    <button class="btn" (click)="onSubmit()">Gravar</button>
     <button (click)="onCancel()">Fechar</button>
   </mat-card-actions>
 </mat-card>
-
-
-

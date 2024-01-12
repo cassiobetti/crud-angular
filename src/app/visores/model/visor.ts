@@ -1,3 +1,7 @@
+import { Espec } from "./espec";
+import { Salas } from "./salas";
+
+
 export interface Visor {
   _id: string;
   nome: string;
@@ -7,6 +11,8 @@ export interface Visor {
   recepcao: string;
   atendimento: string;
   estatistica: string;
+  espec: Espec[];
+  salas: Salas[];
 }
 
 

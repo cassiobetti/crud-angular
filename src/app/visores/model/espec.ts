@@ -1,4 +1,4 @@
-export interface Salas {
+export interface Espec {
   id: string;
   nome: string;
 }

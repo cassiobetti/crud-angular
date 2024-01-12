@@ -12,7 +12,8 @@ import { MatTableModule } from '@angular/material/table';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-
+import { MatGridListModule } from '@angular/material/grid-list';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 
 @NgModule({
@@ -30,7 +31,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     MatSnackBarModule,
     MatButtonToggleModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    MatGridListModule,
+    FontAwesomeModule
   ],
 })
 export class AppMaterialModule { }

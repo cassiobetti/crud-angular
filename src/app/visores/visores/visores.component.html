@@ -1,4 +1,6 @@
-<div>
+
+<body class="mat-typography">
+  <div>
   <div class="toolbar">
     <div style="margin:1px ;">
       <button class="adicionar" (click)="onAdd()"  aria-label="Adicionar um visor">
@@ -7,26 +9,27 @@
     </div>
     <div style="margin:1px; padding: 5px;">
       <button (click)="refresh()" aria-label="Atualizar">
-      <mat-icon >replay</mat-icon>
-      </button>
-    </div>
-    <div style="margin:1px; padding: 5px;">
-      <button  aria-label="Fechar">
       <mat-icon >sync</mat-icon>
       </button>
     </div>
-    <div style="width: 1000px; height: 20px; margin: 30px 10px 30px 0px;">
-      <input type="search" class="inputext">
+    <div style="margin:1px; padding: 5px;">
+      <button (click)="refresh()" aria-label="Fechar">
+      <mat-icon >replay</mat-icon>
+      </button>
     </div>
-    <div style="width: 10px; margin: 50px 10px 30px 0px;">
-      <input type="checkbox" formControlName="ativo">
+    <div style="width: 1050px; height: 20px; margin: 30px 10px 30px 10px;">
+      <input type="text"  class="inputext" >
     </div>
-    <div style="width: 90px; margin: 50px 10px 30px 0px;">
-      <label for="Ativos">Somente Ativos</label>
+    <div style=" margin: 50px -30px 30px 0px; ">
+      <input style=" margin-left: 50px;" type="checkbox" formControlName="ativo">
+    </div>
+    <div class="ativos">
+      <label style="margin: 100px 0px 0px 38px;">Somente Ativos</label>
     </div>
   </div>
 
-  <div>
+  <div class="appvisores">
+    <div class="appbloco">
     <app-visores-list
        *ngIf="visores$ | async as visores; else loading"
        [visores]="visores"
@@ -41,3 +44,6 @@
    </ng-template>
   </div>
 </div>
+</div>
+</body>
+

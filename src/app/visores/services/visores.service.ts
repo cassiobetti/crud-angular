@@ -2,9 +2,9 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { first } from 'rxjs/operators';
 
-import { Salas } from '../model/salas';
 import { Visor } from '../model/visor';
-import { Especialidades } from './../model/especialidades';
+import { Espec } from '../model/espec';
+import { Observable } from 'rxjs';
 
 
 @Injectable({
@@ -21,9 +21,12 @@ export class VisoresService {
   list() {
     return this.httpClient.get<Visor[]>(this.API)
     .pipe(
-      first(),
-      //tap(visores => console.log(visores) )
+      first()
     );
+  }
+
+  getDados(): Observable<any[]> {
+    return this.httpClient.get<any[]>('api/visores');
   }
 
 
@@ -50,39 +53,18 @@ export class VisoresService {
     return this.httpClient.delete(`${this.API}/${id}`);
   }
 
-
-
   Espec() {
-    return this.httpClient.get<Especialidades[]>(this.APIESP)
+    return this.httpClient.get<Espec[]>(this.APIESP)
     .pipe(
       first(),
     );
   }
 
-  saveespec(recordespec:Partial<Especialidades>) {
-    return this.httpClient.post<Especialidades>(this.APIESP, recordespec);
-  }
-
-  removeespec(id: String){
-    return this.httpClient.delete(`${this.APIESP}/${id}`);
+  saveespec(recordespec:Partial<Espec>) {
+    return this.httpClient.post<Espec>(this.APIESP, recordespec);
   }
 
 
-
-  Salas() {
-    return this.httpClient.get<Salas[]>(this.APISALAS)
-    .pipe(
-      first(),
-    );
-  }
-
-  savesalas(recordsalas:Partial<Salas>) {
-    return this.httpClient.post<Salas>(this.APISALAS, recordsalas);
-  }
-
-  removesalas(id: String){
-    return this.httpClient.delete(`${this.APISALAS}/${id}`);
-  }
 
  }
 

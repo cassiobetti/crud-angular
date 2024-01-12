@@ -1,19 +1,45 @@
+
+
+
 div {
   height: 40px;
-  max-width: 99%;
+  max-width: 100%;
   margin: 2em auto;
   box-sizing: border-box;
   font-family: Roboto, Tahoma, Geneva, Verdana, sans-serif;
   font-size: 12px;
+  margin-left: 1px;
+  margin-right: 1px;
+}
+
+.appvisores {
+  width: auto;
+  height: 1650%;
+  margin: 5px;
+  border: 1px solid #c4c3c3;
+  background: white;
+  border-radius: 3px;
+}
+
+.appbloco {
+  width: 98.8%;
+  height: auto;
+  margin: 5px;
+  border-right: 12px;
 }
 
 .toolbar {
-  width: 99%;
+  width: 99.4%;
   display: flex;
   flex-direction: row;
   align-items: center;
   background-color: white;
-  border: 1px solid #d3d3d3;
+  border: 1px solid #c4c3c3;
+  margin-top: -21px;
+  margin-left: 5px;
+  margin-right: 1px;
+  margin-bottom: 1px;
+  border-radius: 3px;
 }
 
 .column-flex {
@@ -23,6 +49,7 @@ div {
   box-sizing: border-box;
   font-family: Roboto, Tahoma, Geneva, Verdana, sans-serif;
   font-size: 12px;
+
 }
 
 .loading-spinner {
@@ -52,6 +79,7 @@ p {
   width: 30px;
   font-family: Roboto, Tahoma, Geneva, Verdana, sans-serif;
   font-size: 12px;
+
 }
 
 button {
@@ -70,20 +98,40 @@ button {
 }
 
 .inputext {
-  width: 100%;
+  all: unset;
+  width: 105%;
   border: 1px solid #d3d3d3;
 
 }
 
 .tabela {
-  width: 99%;
+  width: 100%;
   display: flex;
   flex-direction: row;
   align-items: center;
   background-color: white;
   border: 1px solid #d3d3d3;
+  border-radius: 50%;
+
 }
 
 app-visores-list {
+  width: 9%;
   background-color: #000000;
+
 }
+
+
+.mat-typography {
+  background: #d3d3d3;
+  height: 94%;
+  margin-top: 0px;
+
+}
+
+.ativos{
+  height: 1px;
+  margin-top: 3px;
+}
+
+

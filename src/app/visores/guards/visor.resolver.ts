@@ -15,6 +15,6 @@ export class visorResolver implements Resolve<Visor> {
     if (route.params && route.params['id']) {
       return this.service.loadById(route.params['id']);
   }
-   return of({ _id: '', nome: '', ativo: '', chamadas: '', tempo: '', recepcao: '', atendimento: '', estatistica: '' });
+   return of({ _id: '', nome: '', ativo: '', chamadas: '', tempo: '', recepcao: '', atendimento: '', estatistica: '', espec: [], salas: []});
  }
 }

@@ -30,17 +30,26 @@
 
   <ng-container matColumnDef="ativo">
     <mat-header-cell  *matHeaderCellDef> Ativo </mat-header-cell>
-    <mat-cell  *matCellDef="let visor"> {{visor.ativo}} </mat-cell>
+    <mat-cell  *matCellDef="let visor">
+      <mat-icon aria-hidden="false" aria-label="Example home icon">{{ visor.ativo | icons }}</mat-icon>
+     </mat-cell>
+
+
   </ng-container>
 
   <ng-container matColumnDef="recepcao">
     <mat-header-cell  *matHeaderCellDef> Chama Recepção (PA) </mat-header-cell>
-    <mat-cell  *matCellDef="let visor"> {{visor.recepcao}} </mat-cell>
+    <mat-cell  *matCellDef="let visor">
+      <mat-icon aria-hidden="false" aria-label="Example home icon">{{ visor.recepcao | icons }}</mat-icon>
+    </mat-cell>
+
   </ng-container>
 
   <ng-container matColumnDef="atendimento">
     <mat-header-cell  *matHeaderCellDef> Chama Pré Atendimento (PA)</mat-header-cell>
-    <mat-cell  *matCellDef="let visor"> {{visor.atendimento}} </mat-cell>
+    <mat-cell  *matCellDef="let visor">
+      <mat-icon aria-hidden="false" aria-label="Example home icon">{{ visor.atendimento | icons }}</mat-icon>
+    </mat-cell>
   </ng-container>
 
   <ng-container matColumnDef="_id">

@@ -41,6 +41,8 @@ export class VisoresComponent {
     );
   }
 
+
+
   onError(errorMsg: string) {
     this.dialog.open(ErrorDialogComponent, {
       data: errorMsg
@@ -49,11 +51,14 @@ export class VisoresComponent {
 
   onAdd() {
     this.router.navigate(['new'], {relativeTo: this.route});
+
   }
 
   onEdit(visor: Visor) {
     this.router.navigate(['edit',visor._id], {relativeTo: this.route});
   }
+
+
 
 
 

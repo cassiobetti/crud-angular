@@ -1,4 +1,8 @@
+
+
 mat-table {
+  width: 100.4%;
+  border-right: 0px;
   overflow: auto;
   max-height: 600px;
   display: flex;
@@ -7,17 +11,20 @@ mat-table {
   box-sizing: border-box;
   font-family: Roboto, Tahoma, Geneva, Verdana, sans-serif;
   font-size: 22px;
-  border: 1px solid #d3d3d3;
+  border: 1px solid #c4c3c3;
+
 
 }
 
 mat-header-cell {
   font-size: 12px;
+  background-color: red;
 
 }
 
 mat-cell {
   font-size: 12px;
+  background-color: white;
 }
 
 mat-icon {
@@ -25,4 +32,27 @@ mat-icon {
   width: 35px;
   height: 20px;
 }
+
+.mat-mdc-icon-button.mat-warn {
+  --mdc-icon-button-icon-color: #5e5e5e;
+  --mat-mdc-button-persistent-ripple-color: #ffffff;
+  --mat-mdc-button-ripple-color: rgba(244, 67, 54, 0.1);
+}
+
+.mat-mdc-icon-button.mat-primary {
+  --mdc-icon-button-icon-color: #5e5e5e;
+  --mat-mdc-button-persistent-ripple-color: #fffafa;
+  --mat-mdc-button-persistent-ripple-color: #fdfcfc;
+  mat-mdc-button-ripple-color: rgba(63, 81, 181, 0.1);
+}
+
+.fa-plus-circle:before {
+  content: "\f055";
+  color: white;
+}
+
+mat-header-row {
+  background-color: #d3d3d3;
+}
+
 
