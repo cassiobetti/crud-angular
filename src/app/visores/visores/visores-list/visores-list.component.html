@@ -1,35 +1,36 @@
 
 
+
 <mat-table [dataSource]="visores">
 
   <ng-container matColumnDef="edit">
-    <mat-header-cell *matHeaderCellDef>Alterar
+    <mat-header-cell *matHeaderCellDef matTooltip="Alterar" matTooltipPosition="above">Alterar
     </mat-header-cell>
     <mat-cell *matCellDef="let visor">
-      <button (click)="onEdit(visor)" mat-icon-button color="primary" aria-label="Editar Visor">
-        <mat-icon>edit</mat-icon>
-      </button>
+      <button (click)="onEdit(visor)" aria-label="Editar Visor">
+        <i class="fa-solid fa-pen-to-square fa-sm" style="color: #000000;"></i>
+            </button>
     </mat-cell>
   </ng-container>
 
   <ng-container matColumnDef="delete">
-      <mat-header-cell *matHeaderCellDef>Excluir
+      <mat-header-cell *matHeaderCellDef matTooltip="Excluir" matTooltipPosition="above">Excluir
       </mat-header-cell>
       <mat-cell *matCellDef="let visor">
       <button (click)="onDelete(visor)" mat-icon-button color="warn" aria-label="Remover Visor">
-        <mat-icon>delete</mat-icon>
-      </button>
+        <i class="fa-solid fa-trash-can fa-2xs" style="color: #000000;"></i>
+            </button>
     </mat-cell>
   </ng-container>
 
   <ng-container matColumnDef="nome">
-    <mat-header-cell  *matHeaderCellDef> Nome </mat-header-cell>
+    <mat-header-cell  *matHeaderCellDef matTooltip="Nome" matTooltipPosition="above"> Nome </mat-header-cell>
     <mat-cell  *matCellDef="let visor"> {{ visor.nome}} </mat-cell>
   </ng-container>
 
 
   <ng-container matColumnDef="ativo">
-    <mat-header-cell  *matHeaderCellDef> Ativo </mat-header-cell>
+    <mat-header-cell  *matHeaderCellDef matTooltip="Ativo" matTooltipPosition="above"> Ativo </mat-header-cell>
     <mat-cell  *matCellDef="let visor">
       <mat-icon aria-hidden="false" aria-label="Example home icon">{{ visor.ativo | icons }}</mat-icon>
      </mat-cell>
@@ -38,27 +39,26 @@
   </ng-container>
 
   <ng-container matColumnDef="recepcao">
-    <mat-header-cell  *matHeaderCellDef> Chama Recepção (PA) </mat-header-cell>
+    <mat-header-cell  *matHeaderCellDef matTooltip="Chama Recepção" matTooltipPosition="above"> Chama...  </mat-header-cell>
     <mat-cell  *matCellDef="let visor">
-      <mat-icon aria-hidden="false" aria-label="Example home icon">{{ visor.recepcao | icons }}</mat-icon>
+      <mat-icon  aria-hidden="false" aria-label="Example home icon">{{ visor.recepcao | icons }}</mat-icon>
     </mat-cell>
 
   </ng-container>
 
   <ng-container matColumnDef="atendimento">
-    <mat-header-cell  *matHeaderCellDef> Chama Pré Atendimento (PA)</mat-header-cell>
+    <mat-header-cell  *matHeaderCellDef matTooltip="Chama Pré Atendimento" matTooltipPosition="above"> Chama...</mat-header-cell>
     <mat-cell  *matCellDef="let visor">
       <mat-icon aria-hidden="false" aria-label="Example home icon">{{ visor.atendimento | icons }}</mat-icon>
     </mat-cell>
   </ng-container>
 
   <ng-container matColumnDef="_id">
-    <mat-header-cell  *matHeaderCellDef> ID </mat-header-cell>
+    <mat-header-cell  *matHeaderCellDef matTooltip="ID" matTooltipPosition="above"> ID </mat-header-cell>
     <mat-cell  *matCellDef="let visor"> {{visor._id}} </mat-cell>
   </ng-container>
 
   <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
   <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
 </mat-table>
-
 

@@ -4,6 +4,8 @@ import { ErrorDialogComponent } from './components/error-dialog/error-dialog.com
 import { AppMaterialModule } from './app-material/app-material.module';
 import { ConfirmationDialogComponent } from './components/confirmation-dialog/confirmation-dialog.component';
 import { IconsPipe } from './pipes/icons.pipe';
+import { ConfirmationNomeDialogComponent } from './components/confirmation-nome-dialog/confirmation-nome-dialog.component';
+import { ConfirmationEspecDialogComponent } from './components/confirmation-espec-dialog/confirmation-espec-dialog.component';
 
 
 
@@ -13,6 +15,8 @@ import { IconsPipe } from './pipes/icons.pipe';
     ErrorDialogComponent,
     ConfirmationDialogComponent,
     IconsPipe,
+    ConfirmationNomeDialogComponent,
+    ConfirmationEspecDialogComponent,
 
   ],
   imports: [
@@ -22,6 +26,7 @@ import { IconsPipe } from './pipes/icons.pipe';
   exports: [
     ErrorDialogComponent,
     ConfirmationDialogComponent,
+    ConfirmationNomeDialogComponent,
     IconsPipe
   ],
 

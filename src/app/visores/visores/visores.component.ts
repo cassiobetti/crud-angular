@@ -3,7 +3,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Observable, of } from 'rxjs';
-import { catchError } from 'rxjs/operators';
+import { catchError, map } from 'rxjs/operators';
 import { ConfirmationDialogComponent } from 'src/app/shared/components/confirmation-dialog/confirmation-dialog.component';
 
 import { ErrorDialogComponent } from '../../shared/components/error-dialog/error-dialog.component';
@@ -18,7 +18,6 @@ import { VisoresService } from '../services/visores.service';
 export class VisoresComponent {
 
   visores$: Observable<Visor[]> | null = null;
-
 
   constructor(
     private visoresService: VisoresService,
@@ -41,8 +40,6 @@ export class VisoresComponent {
     );
   }
 
-
-
   onError(errorMsg: string) {
     this.dialog.open(ErrorDialogComponent, {
       data: errorMsg
@@ -57,9 +54,6 @@ export class VisoresComponent {
   onEdit(visor: Visor) {
     this.router.navigate(['edit',visor._id], {relativeTo: this.route});
   }
-
-
-
 
 
   onRemove(visor: Visor) {
@@ -83,8 +77,4 @@ export class VisoresComponent {
       }
     });
   }
-
-
-
-
 }

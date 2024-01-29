@@ -14,4 +14,5 @@ export class IconsPipe implements PipeTransform {
     return '';
   }
 
+
 }

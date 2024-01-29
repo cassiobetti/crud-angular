@@ -11,6 +11,10 @@ import { Visor } from '../model/visor';
 import { VisoresService } from '../services/visores.service';
 import { ConfirmationDialogComponent } from 'src/app/shared/components/confirmation-dialog/confirmation-dialog.component';
 
+import { ConfirmationNomeDialogComponent } from 'src/app/shared/components/confirmation-nome-dialog/confirmation-nome-dialog.component';
+import { ConfirmationEspecDialogComponent } from 'src/app/shared/components/confirmation-espec-dialog/confirmation-espec-dialog.component';
+import { MatTableDataSource } from '@angular/material/table';
+
 @Component({
   selector: 'app-visores-form',
   templateUrl: './visores-form.component.html',
@@ -24,9 +28,6 @@ export class VisoresFormComponent {
 
   form!: FormGroup;
 
-
-
-
   constructor(private formBuilder: NonNullableFormBuilder,
     private visoresService: VisoresService,
     private service: VisoresService,
@@ -34,8 +35,6 @@ export class VisoresFormComponent {
     private location: Location,
     private route: ActivatedRoute,
     public dialog: MatDialog
-
-
   ) {
   }
 
@@ -54,6 +53,7 @@ export class VisoresFormComponent {
       salas: this.formBuilder.array(this.obterSalas(visor))
     });
   }
+
 
   private obterEspecs(visor: Visor) {
     const especs = [];
@@ -79,7 +79,6 @@ export class VisoresFormComponent {
   addNewEspec() {
     const especs = this.form.get('espec') as UntypedFormArray;
     especs.push(this.createEspec());
-
   }
 
   removeEspec(index: number) {
@@ -93,6 +92,19 @@ export class VisoresFormComponent {
         especs.removeAt(index)
         }
       });
+  }
+
+  private hasDuplicateEspecs(): boolean {
+    const especs = this.form.value.espec;
+    const especNames = especs.map((espec: { nome: string; }) => espec.nome.toLowerCase());
+    const uniqueEspecNames = [...new Set(especNames)];
+    return especNames.length !== uniqueEspecNames.length;
+  }
+
+  getErrorMessage(fieldEspec: string){
+    const field = this.form.get(fieldEspec);
+    if (field?.hasError('required')) {}
+    return 'campo obrigatorio';
   }
 
   private obterSalas(visor: Visor) {
@@ -130,40 +142,65 @@ export class VisoresFormComponent {
 
     dialogRef.afterClosed().subscribe((result: boolean) => {
       if (result) {
-    const salas = this.form.get('salas') as UntypedFormArray;
-    salas.removeAt(index);
+        const salas = this.form.get('salas') as UntypedFormArray;
+        salas.removeAt(index);
+        }
+      });
   }
-});
-}
+
+  private hasDuplicateSalas(): boolean {
+    const salas = this.form.value.salas;
+    const salasNames = salas.map((salas: { nome: string; }) => salas.nome.toLowerCase());
+    const uniqueSalasNames = [...new Set(salasNames)];
+
+    return salasNames.length !== uniqueSalasNames.length;
+  }
 
 
   onSubmit() {
-    this.service.save(this.form.value)
-      .subscribe(result => this.onSuccess());
-  }
+    if (this.form.value.nome.trim() === '') {
+      this.dialog.open(ConfirmationNomeDialogComponent, {
+        data: 'O nome deve ser informado!'
+      });
 
+    }else if (this.hasDuplicateEspecs()) {
+      this.dialog.open(ConfirmationEspecDialogComponent, {
+        data: 'Especialidades iguais estão cadastradas!'
+      });
+
+    }else if (this.hasDuplicateSalas()) {
+      this.dialog.open(ConfirmationEspecDialogComponent, {
+        data: 'Salas iguais estão cadastradas!'
+      });
+
+    }else {
+      this.service.save(this.form.value).subscribe(result => this.onSuccess());
+    }
+}
+  getErrorMessage2(fieldSalas: string){
+    const field = this.form.get(fieldSalas);
+    if (field?.hasError('required')) {}
+    return 'campo obrigatorio';
+  }
 
   onCancel() {
     this.location.back();
   }
 
   private onSuccess() {
-    this.snackBar.open('Visor salvo com sucesso!', '', { duration: 1000 });
     this.onCancel();
-  }
-
-
-  private onError() {
-    this.snackBar.open('Erro ao salvar visor.', '', { duration: 1000 });
   }
 
   onClickMostrarEspec() {
     this.mostrarespec = !this.mostrarespec;
-
   }
 
   onClickMostrarSalas() {
     this.mostrarsalas = !this.mostrarsalas;
   }
 
+
 }
+
+
+

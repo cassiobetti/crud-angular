@@ -5,6 +5,7 @@ import { first } from 'rxjs/operators';
 import { Visor } from '../model/visor';
 import { Espec } from '../model/espec';
 import { Observable } from 'rxjs';
+import { Salas } from '../model/salas';
 
 
 @Injectable({
@@ -62,6 +63,21 @@ export class VisoresService {
 
   saveespec(recordespec:Partial<Espec>) {
     return this.httpClient.post<Espec>(this.APIESP, recordespec);
+  }
+
+  Salas() {
+    return this.httpClient.get<Salas[]>(this.APISALAS)
+    .pipe(
+      first(),
+    );
+  }
+
+  savesalas(recordsalas:Partial<Salas>) {
+    return this.httpClient.post<Salas>(this.APISALAS, recordsalas);
+  }
+
+  removesalas(id: String){
+    return this.httpClient.delete(`${this.APISALAS}/${id}`);
   }
 
 

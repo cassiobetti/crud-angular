@@ -1,3 +1,8 @@
+body {
+  background: #f0f0f0;
+  max-height: 90%;
+}
+
 mat-card {
   max-width: 100%;
   margin: .5em auto;
@@ -32,7 +37,7 @@ mat-card {
 }
 
 .group {
-  margin: 0%;
+  margin: 5px;
   font-size: 12px;
   font-weight: 400;
   line-height: 10px;
@@ -66,7 +71,7 @@ mat-toolbar {
   position: fixed;
   left: 0;
   right: 0;
-  bottom: 0;
+  bottom: -5px;
 }
 
 label {
@@ -210,11 +215,7 @@ button {
   padding: 0px
 }
 
-.mat-button-toggle-checked{
-  background-color: #2979FF;
-  color: white;
 
-}
 
 .select {
   display: flex;
@@ -245,10 +246,10 @@ button {
 }
 
 .blocoespec {
-  width: 98.8%;
+  width: 99.6%;
   height: auto;
   border: 1px  solid #d3d3d3;
-  margin: 3px;
+  margin: 2px;
 }
 
 
@@ -262,10 +263,10 @@ button {
 
 .titleespec {
   text-align: left;
-  padding-top: 10px;
+  padding-top: 15px;
   padding-left: 5px;
   background: #d3d3d3;
-  height:30px;
+  height:20px;
   font-size: medium;
 }
 
@@ -304,12 +305,6 @@ button {
   background-color: #e2e2e2;
 }
 
-.nomeespec {
-  border: 1px solid #acaaaa;
-  background-color: #e2e2e2;
-}
-
-
 
 .dadosespec {
   border-bottom: 1px solid #acaaaa;
@@ -345,7 +340,7 @@ button {
   text-align: left;
   padding-top: 10px;
   padding-left: 5px;
-  background: #d3d3d3;
+  background: #e9e9e9;
   height:30px;
   font-size: medium;
 }
@@ -369,16 +364,25 @@ button {
 
 
 
-.mat-button-toggle {
-  background: none;
+.especbtn{
+  background: white;
+  font-size: 13px;
+  width: 200px;
+  text-align: end;
+  height: 30px;
+}
+
+.salasbtn{
+  background: white;
   color: inherit;
   font: inherit;
-  outline: none;
-  width: 100%;
+  outline: #65bf84;
   cursor: pointer;
-  font-size: 15px;
+  font-size: 13px;
+  text-align: center;
   width: 200px;
-  height: 35px;
+  height: 30px;
+
 }
 
 th {
@@ -389,7 +393,7 @@ th {
   vertical-align: inherit;
   font-weight: 500;
   text-align: left;
-  background: #d3d3d3;
+  background: #e9e9e9;
   height: 35px;
   width: 50px;
   font-size: inherit;
@@ -400,7 +404,7 @@ th {
   vertical-align: inherit;
   font-weight: 500;
   text-align: left;
-  background: #d3d3d3;
+  background: #e9e9e9;
   height: 35px;
   width: 1100px;
   font-size: inherit;
@@ -422,7 +426,20 @@ table {
   text-indent: initial;
   border-spacing: 5px;
   border-color: rgb(153, 4, 4);
+  background: white;
+  width: 99.9%;
 }
 
+.pespec {
+  margin-top: -8px;
+  margin-left: -75px;
+}
 
+.psalas {
+  margin-top: -8px;
+  margin-left: -130px;
+}
 
+.invalid {
+  border-color: red;
+}

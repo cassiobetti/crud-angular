@@ -1,0 +1,20 @@
+.dial {
+ color: black;
+}
+
+.button1 {
+  border: 1px  solid #d3d3d3;
+  width: 130px;
+  background:#165055;
+  color: white;
+}
+
+button {
+  border: 1px  solid #d3d3d3;
+  width: 130px;
+  background: #dedede;
+}
+
+.mat-mdc-button:not(:disabled) {
+  color: #f3f3f3;
+}

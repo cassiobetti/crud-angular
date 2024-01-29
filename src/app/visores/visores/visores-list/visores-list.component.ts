@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Input, Output} from '@angular/core';
 import { Visor } from '../../model/visor';
-import { ActivatedRoute, Router } from '@angular/router';
+
+
 
 @Component({
   selector: 'app-visores-list',
@@ -16,7 +17,9 @@ export class VisoresListComponent {
 
   readonly displayedColumns = ['edit', 'delete', 'nome', 'ativo', 'recepcao', 'atendimento', '_id' ];
 
-  constructor() {}
+
+  constructor() {
+  }
 
 
   onAdd() {
@@ -30,4 +33,5 @@ export class VisoresListComponent {
   onDelete(visor: Visor) {
     this.remove.emit(visor);
   }
+
 }

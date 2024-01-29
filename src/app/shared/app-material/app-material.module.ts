@@ -14,6 +14,9 @@ import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { MatTooltipModule } from '@angular/material/tooltip';
+
+
 
 
 @NgModule({
@@ -33,7 +36,8 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     ReactiveFormsModule,
     FormsModule,
     MatGridListModule,
-    FontAwesomeModule
+    FontAwesomeModule,
+    MatTooltipModule
   ],
 })
 export class AppMaterialModule { }
